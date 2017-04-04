@@ -60,6 +60,21 @@ if (TYPO3_MODE === 'BE') {
         'BK2K\\BootstrapPackage\\Service\\InstallService',
         'generateApacheHtaccess'
     );
+
+    /**
+     * Register custom EXT:form configuration
+     */
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(
+        trim('
+                module.tx_form {
+                    settings {
+                        yamlConfigurations {
+                            100 = EXT:bootstrap_package/Configuration/Form/CustomFormSetup.yaml
+                        }
+                    }
+                }
+            ')
+    );
 }
 
 /***************
